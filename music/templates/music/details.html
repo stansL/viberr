@@ -1,0 +1,17 @@
+{% extends 'music/base.html' %}
+{% block title %}Viber: Album Details{% endblock %}
+{% block content %}
+    <h3>Album: {{ album.album_title }}</h3>
+    {% if album.song_set.all %}
+        <ul>
+            {% for song in album.song_set.all %}
+                <i>{{ song }}</i>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <h5>No Songs in this album</h5>
+
+    {% endif %}
+
+{% endblock %}

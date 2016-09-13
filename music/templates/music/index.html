@@ -1,0 +1,21 @@
+{% extends 'music/base.html' %}
+{% block title %}Viberr: Albums{% endblock %}
+
+{% block content %}
+    {% if all_albums %}
+        <ul>
+            {% for album in all_albums %}
+                <li>
+                    <a href="{% url 'music:detail' album.pk %}"> {{ album.album_title }}</a>
+                </li>
+                <a href="{% url 'music:update' album.pk %}" title="Edit"><span class="glyphicon glyphicon-edit"
+                                                                               aria-hidden="true">&nbsp;</span></a>
+                <a href="{% url 'music:album-delete' album.pk %}" title="Delete"><span class="glyphicon glyphicon-trash"
+                                                                               aria-hidden="true">&nbsp;</span></a>
+
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h1>No Albums Found</h1>
+    {% endif %}
+{% endblock %}
